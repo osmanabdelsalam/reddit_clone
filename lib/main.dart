@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:reddit_clone/app_core/commons/error_message.dart';
 import 'package:reddit_clone/app_core/commons/loader.dart';
 import 'package:reddit_clone/features/auth/controller/auth_controller.dart';
-import 'package:reddit_clone/features/auth/ui/login_screen.dart';
 import 'package:reddit_clone/models/user_model.dart';
 import 'package:reddit_clone/routers.dart';
 import 'package:reddit_clone/theme/app_theme.dart';

@@ -1,5 +1,7 @@
 {
     "skip": "تخطي",
     "continue_with_google": "تسجيل الدخول بإستخدام قوقل",
-    "dive_into_any_thing": "استكشف كل شئ"
+    "dive_into_any_thing": "استكشف كل شئ",
+    "home": "الرئيسية",
+    "create_community": "إنشاء مجتمع"
 }
