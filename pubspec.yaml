@@ -37,6 +37,7 @@ dependencies:
   firebase_auth:
   google_sign_in:
   flutter_riverpod:
+  routemaster:
 
 
   # The following adds the Cupertino Icons font to your application.
