@@ -3,5 +3,16 @@
     "continue_with_google": "تسجيل الدخول بإستخدام قوقل",
     "dive_into_any_thing": "استكشف كل شئ",
     "home": "الرئيسية",
-    "create_community": "إنشاء مجتمع"
+    "create_community": "إنشاء مجتمع",
+    "community_name": "إسم المجتمع",
+    "community_name_hint": "الإسم",
+    "community_created_successfully": "تم إنشاء المجتمع بنجاح",
+
+    "error": "{errorKey, select, community_with_same_name_already_exists {يوجد مجتمع بهذا الإسم مسبقاً.} other {خطأ}  }",
+    "@error": {
+        "placeholders": {
+            "description": "Errors template",
+            "errorKey": {}
+        }
+    }
 }

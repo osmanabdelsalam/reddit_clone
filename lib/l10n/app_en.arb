@@ -3,5 +3,16 @@
   "continue_with_google": "Continue with google",
   "dive_into_any_thing": "Dive into anything",
   "home": "Home",
-  "create_community": "Create a community"
+  "create_community": "Create a community",
+  "community_name": "Community name",
+  "community_name_hint": "r/Community_name",
+  "community_created_successfully": "Community created successfully",
+
+  "error": "{errorKey, select, community_with_same_name_already_exists {Community with same name already exists.} other {Error} }",
+  "@error": {
+    "description": "Errors template",
+    "placeholders": {
+        "errorKey": {}
+    }
+  }
 }
