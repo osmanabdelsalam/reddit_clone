@@ -7,6 +7,11 @@
     "community_name": "إسم المجتمع",
     "community_name_hint": "الإسم",
     "community_created_successfully": "تم إنشاء المجتمع بنجاح",
+    "join": "إنضمام",
+    "members": "أعضاء",
+    "member": "عضو",
+    "tools": "إعدادات",
+    "joined": "منضم",
 
     "error": "{errorKey, select, community_with_same_name_already_exists {يوجد مجتمع بهذا الإسم مسبقاً.} other {خطأ}  }",
     "@error": {

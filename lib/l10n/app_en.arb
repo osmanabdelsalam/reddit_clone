@@ -7,6 +7,11 @@
   "community_name": "Community name",
   "community_name_hint": "r/Community_name",
   "community_created_successfully": "Community created successfully",
+  "join": "Join",
+  "members": "members",
+  "member": "member",
+  "tools": "Tools",
+  "joined": "Joined",
 
   "error": "{errorKey, select, community_with_same_name_already_exists {Community with same name already exists.} other {Error} }",
   "@error": {
