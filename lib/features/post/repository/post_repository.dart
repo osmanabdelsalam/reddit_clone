@@ -5,6 +5,7 @@ import 'package:reddit_clone/app_core/constants/firebase_constants.dart';
 import 'package:reddit_clone/app_core/failure.dart';
 import 'package:reddit_clone/app_core/providers/firebase_providers.dart';
 import 'package:reddit_clone/app_core/type_defs.dart';
+import 'package:reddit_clone/models/comment_model.dart';
 import 'package:reddit_clone/models/community.dart';
 import 'package:reddit_clone/models/post_model.dart';
 
@@ -125,4 +126,32 @@ class PostRepository {
     );
   }
 
+  Stream<List<Comment>> getCommentsOfPost(String postId) {
+    return _comments.where('postId', isEqualTo: postId).orderBy('createdAt', descending: true).snapshots().map(
+          (event) => event.docs
+          .map(
+            (e) => Comment.fromMap(
+          e.data() as Map<String, dynamic>,
+        ),
+      ).toList(),
+    );
+  }
+
+  FutureVoid addComment(Comment comment) async {
+    try {
+      await _comments.doc(comment.id).set(comment.toMap());
+
+      return right(_posts.doc(comment.postId).update({
+        'commentCount': FieldValue.increment(1),
+      }));
+    } on FirebaseException catch (e) {
+      throw e.message!;
+    } catch (e) {
+      return left(Failure(e.toString()));
+    }
+  }
+
+  Stream<Post> getPostById(String postId) {
+    return _posts.doc(postId).snapshots().map((event) => Post.fromMap(event.data() as Map<String, dynamic>));
+  }
 }

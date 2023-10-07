@@ -9,6 +9,7 @@ import 'package:reddit_clone/features/community/ui/moderator_tools_screen.dart';
 import 'package:reddit_clone/features/home/ui/home_screen.dart';
 import 'package:reddit_clone/features/post/ui/add_post_screen.dart';
 import 'package:reddit_clone/features/post/ui/add_post_type_screen.dart';
+import 'package:reddit_clone/features/post/ui/comments_screen.dart';
 import 'package:reddit_clone/features/user_profile/ui/edit_profile_screen.dart';
 import 'package:reddit_clone/features/user_profile/ui/user_profile_screen.dart';
 import 'package:routemaster/routemaster.dart';
@@ -23,20 +24,25 @@ final authenticatedUserRoutes = RouteMap(routes: {
   '/moderator-tools/:name': (route) =>  MaterialPage(child: ModeratorToolsScreen(
     name: route.pathParameters['name']!,
   )),
+
   '/edit-community/:name': (route) =>  MaterialPage(child: EditCommunityScreen(
     name: route.pathParameters['name']!,
   )),
+
   '/add-moderators/:name': (routeData) => MaterialPage(
     child: AddModeratorScreen(
       name: routeData.pathParameters['name']!,
     ),
   ),
+
   '/r/:name': (route) => MaterialPage(child: CommunityScreen(
     name: route.pathParameters['name']!,
   )),
+
   '/add-post': (routeData) => const MaterialPage(
     child: AddPostScreen(),
   ),
+
   '/add-post/:type': (routeData) => MaterialPage(
     child: AddPostTypeScreen(
       type: routeData.pathParameters['type']!,
@@ -54,4 +60,11 @@ final authenticatedUserRoutes = RouteMap(routes: {
       uid: routeData.pathParameters['uid']!,
     ),
   ),
+
+  '/post/:postId/comments': (route) => MaterialPage(
+    child: CommentsScreen(
+      postId: route.pathParameters['postId']!,
+    ),
+  ),
+
 });

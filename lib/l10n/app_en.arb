@@ -23,6 +23,7 @@
   "name": "Name",
   "vote": "Vote",
   "comment": "Comment",
+  "reply": "Reply",
 
   "error": "{errorKey, select, community_with_same_name_already_exists {Community with same name already exists.} other {Error} }",
   "@error": {

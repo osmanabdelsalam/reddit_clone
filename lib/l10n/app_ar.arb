@@ -23,6 +23,7 @@
     "name": "الإسم",
     "vote": "تصويت",
     "comment": "تعليق",
+    "reply": "رد",
 
     "error": "{errorKey, select, community_with_same_name_already_exists {يوجد مجتمع بهذا الإسم مسبقاً.} other {خطأ}  }",
     "@error": {
