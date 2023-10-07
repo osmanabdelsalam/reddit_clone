@@ -12,6 +12,9 @@
     "member": "عضو",
     "tools": "إعدادات",
     "joined": "منضم",
+    "moderator_tools": "إعدادات المشرفون",
+    "add_moderator": "إضافة مشرف",
+    "edit_community": "تعديل المجتمع",
 
     "error": "{errorKey, select, community_with_same_name_already_exists {يوجد مجتمع بهذا الإسم مسبقاً.} other {خطأ}  }",
     "@error": {
