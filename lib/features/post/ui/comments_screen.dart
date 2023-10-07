@@ -9,6 +9,7 @@ import 'package:reddit_clone/features/post/controller/post_controller.dart';
 import 'package:reddit_clone/features/post/widgets/comment_card.dart';
 import 'package:reddit_clone/models/post_model.dart';
 import 'package:reddit_clone/responsive/responsive.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CommentsScreen extends ConsumerStatefulWidget {
   final String postId;
@@ -58,8 +59,8 @@ class _CommentsScreenState extends ConsumerState<CommentsScreen> {
                   child: TextField(
                     onSubmitted: (val) => addComment(data),
                     controller: commentController,
-                    decoration: const InputDecoration(
-                      hintText: 'What are your thoughts?',
+                    decoration: InputDecoration(
+                      hintText: AppLocalizations.of(context)?.what_are_your_thoughts ?? 'What are your thoughts?',
                       filled: true,
                       border: InputBorder.none,
                     ),

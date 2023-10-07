@@ -24,6 +24,7 @@
   "vote": "Vote",
   "comment": "Comment",
   "reply": "Reply",
+  "what_are_your_thoughts": "What Are Your Thoughts",
 
   "error": "{errorKey, select, community_with_same_name_already_exists {Community with same name already exists.} other {Error} }",
   "@error": {

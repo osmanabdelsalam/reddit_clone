@@ -24,6 +24,7 @@
     "vote": "تصويت",
     "comment": "تعليق",
     "reply": "رد",
+    "what_are_your_thoughts": "بما تفكر",
 
     "error": "{errorKey, select, community_with_same_name_already_exists {يوجد مجتمع بهذا الإسم مسبقاً.} other {خطأ}  }",
     "@error": {

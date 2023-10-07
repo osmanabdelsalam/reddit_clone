@@ -46,6 +46,7 @@ class CommunityRepository {
   }
 
   Stream<Community> getCommunityByName(String name) {
+    name = name.replaceAll("_", " ");
     return _communities.doc(name).snapshots().map((event) => Community.fromMap(event.data() as Map<String, dynamic>));
   }
 
