@@ -9,6 +9,10 @@ class ModeratorToolsScreen extends StatelessWidget {
   void navigateToEditCommunityScreen(BuildContext context) {
     Routemaster.of(context).push("/edit-community/$name");
   }
+  
+  void navigateToAddModerators(BuildContext context) {
+    Routemaster.of(context).push("/add-moderators/$name");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +25,7 @@ class ModeratorToolsScreen extends StatelessWidget {
           ListTile(
             title: Text(AppLocalizations.of(context)?.add_moderator ?? "Add moderator"),
             leading: const Icon(Icons.add_moderator),
-            onTap: () {},
+            onTap: () => navigateToAddModerators(context),
           ),
           ListTile(
             title: Text(AppLocalizations.of(context)?.edit_community ?? "Edit community"),

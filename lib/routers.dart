@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:reddit_clone/features/auth/ui/login_screen.dart';
+import 'package:reddit_clone/features/community/ui/add_moderator_screen.dart';
 import 'package:reddit_clone/features/community/ui/community_screen.dart';
 import 'package:reddit_clone/features/community/ui/create_community_screen.dart';
 import 'package:reddit_clone/features/community/ui/edit_community_screen.dart';
@@ -21,6 +22,11 @@ final authenticatedUserRoutes = RouteMap(routes: {
   '/edit-community/:name': (route) =>  MaterialPage(child: EditCommunityScreen(
     name: route.pathParameters['name']!,
   )),
+  '/add-moderators/:name': (routeData) => MaterialPage(
+    child: AddModeratorScreen(
+      name: routeData.pathParameters['name']!,
+    ),
+  ),
   '/r/:name': (route) => MaterialPage(child: CommunityScreen(
     name: route.pathParameters['name']!,
   ))

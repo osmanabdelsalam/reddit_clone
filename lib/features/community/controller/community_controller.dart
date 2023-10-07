@@ -110,4 +110,12 @@ class CommunityController extends StateNotifier<bool> {
           (r) => Routemaster.of(context).pop(),
     );
   }
+
+  void addModerators(String communityName, List<String> uids, BuildContext context) async {
+    final res = await _communityRepository.addModerators(communityName, uids);
+    res.fold(
+          (l) => showSnackBar(context, l.message),
+          (r) => Routemaster.of(context).pop(),
+    );
+  }
 }
