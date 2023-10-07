@@ -15,6 +15,7 @@
   "moderator_tools": "Moderator tools",
   "add_moderator": "Add moderator",
   "edit_community": "Edit community",
+  "save": "Save",
 
   "error": "{errorKey, select, community_with_same_name_already_exists {Community with same name already exists.} other {Error} }",
   "@error": {

@@ -13,7 +13,7 @@ class CommunityScreen extends ConsumerWidget {
   const CommunityScreen({super.key, required this.name});
 
   void navigateToModeratorTools(BuildContext context) {
-    Routemaster.of(context).push("/moderator-tools");
+    Routemaster.of(context).push("/moderator-tools/$name");
   }
 
   @override

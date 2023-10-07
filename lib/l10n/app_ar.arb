@@ -15,6 +15,7 @@
     "moderator_tools": "إعدادات المشرفون",
     "add_moderator": "إضافة مشرف",
     "edit_community": "تعديل المجتمع",
+    "save": "حفظ",
 
     "error": "{errorKey, select, community_with_same_name_already_exists {يوجد مجتمع بهذا الإسم مسبقاً.} other {خطأ}  }",
     "@error": {
