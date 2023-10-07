@@ -54,7 +54,7 @@ class _MyAppState extends ConsumerState<MyApp> {
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           debugShowCheckedModeBanner: false,
-          theme: AppTheme.darkModeAppTheme,
+          theme: ref.watch(themeNotifierProvider),
           routerDelegate: RoutemasterDelegate(
               routesBuilder: (context) {
                 if(data != null) {

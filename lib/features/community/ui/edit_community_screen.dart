@@ -76,10 +76,11 @@ class _EditCommunityScreenState extends ConsumerState<EditCommunityScreen> {
   @override
   Widget build(BuildContext context) {
     final isLoading = ref.watch(communityControllerProvider);
+    final currentTheme = ref.watch(themeNotifierProvider);
 
     return ref.watch(getCommunityByNameProvider(widget.name)).when(
       data: (community) => Scaffold(
-        backgroundColor: AppTheme.darkModeAppTheme.backgroundColor,
+        backgroundColor: currentTheme.backgroundColor,
         appBar: AppBar(
           title: Text(AppLocalizations.of(context)?.edit_community ?? "Edit community"),
           centerTitle: false,
@@ -108,7 +109,7 @@ class _EditCommunityScreenState extends ConsumerState<EditCommunityScreen> {
                           radius: const Radius.circular(10),
                           dashPattern: const [10, 4],
                           strokeCap: StrokeCap.round,
-                          color: AppTheme.darkModeAppTheme.textTheme.bodyText2!.color!,
+                          color: currentTheme.textTheme.bodyText2!.color!,
                           child: Container(
                             width: double.infinity,
                             height: 150,

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:reddit_clone/app_core/constants/constants.dart';
@@ -33,36 +34,61 @@ class AuthRepository {
 
   Stream<User?> get authStateChange => _auth.authStateChanges();
 
-  FutureEither<UserModel> signInWithGoogle() async {
+  FutureEither<UserModel> signInWithGoogle(bool isFromLogin) async {
     try {
-      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-      final googleAuthenticate = await googleUser?.authentication;
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuthenticate?.accessToken,
-        idToken: googleAuthenticate?.idToken,
-      );
+      UserCredential userCredential;
+      if (kIsWeb) {
+        GoogleAuthProvider googleProvider = GoogleAuthProvider();
+        googleProvider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+        userCredential = await _auth.signInWithPopup(googleProvider);
+      } else {
+        final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
 
-      UserCredential userCredential = await _auth.signInWithCredential(credential);
-      UserModel userModel; // todo: refactor later.
+        final googleAuth = await googleUser?.authentication;
 
-      if(userCredential.additionalUserInfo!.isNewUser) {
+        final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth?.accessToken,
+          idToken: googleAuth?.idToken,
+        );
+
+        if (isFromLogin) {
+          userCredential = await _auth.signInWithCredential(credential);
+        } else {
+          userCredential = await _auth.currentUser!.linkWithCredential(credential);
+        }
+      }
+
+      UserModel userModel;
+
+      if (userCredential.additionalUserInfo!.isNewUser) {
         userModel = UserModel(
-            name: userCredential.user?.displayName ?? "No Name",
-            profilePicture: userCredential?.user?.photoURL ?? Constants.defaultRedditAvatar,
-            banner: Constants.defaultUserBanner,
-            uid: userCredential!.user!.uid,
-            isAuthenticated: true,
-            action: 0,
-            awards: []
-        ); // todo: work with else section later.
-        await _users.doc(userCredential!.user!.uid).set(userModel.toMap());
+          name: userCredential.user!.displayName ?? 'No Name',
+          profilePicture: userCredential.user!.photoURL ?? Constants.defaultRedditAvatar,
+          banner: Constants.defaultUserBanner,
+          uid: userCredential.user!.uid,
+          isAuthenticated: true,
+          action: 0,
+          awards: [
+            'awesomeAns',
+            'gold',
+            'platinum',
+            'helpful',
+            'plusone',
+            'rocket',
+            'thankyou',
+            'til',
+          ],
+        );
+        await _users.doc(userCredential.user!.uid).set(userModel.toMap());
       } else {
         userModel = await getUserData(userCredential.user!.uid).first;
       }
       return right(userModel);
-    } on FirebaseException catch(firebaseException) {
-      throw firebaseException.message!;
-    } catch(exception) { return left(Failure(exception.toString())); }
+    } on FirebaseException catch (e) {
+      throw e.message!;
+    } catch (e) {
+      return left(Failure(e.toString()));
+    }
   }
 
   Stream<UserModel> getUserData(String uid) {

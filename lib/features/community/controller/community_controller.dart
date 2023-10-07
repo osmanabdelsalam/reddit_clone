@@ -13,6 +13,7 @@ import 'package:reddit_clone/features/community/repository/community_repository.
 import 'package:reddit_clone/models/community.dart';
 import 'package:reddit_clone/app_core/utils.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:reddit_clone/models/post_model.dart';
 import 'package:routemaster/routemaster.dart';
 
 final userCommunitiesProvider = StreamProvider((ref) {
@@ -32,6 +33,10 @@ final communityControllerProvider = StateNotifierProvider<CommunityController, b
 
 final getCommunityByNameProvider = StreamProvider.family((ref, String name) {
   return ref.watch(communityControllerProvider.notifier).getCommunityByName(name);
+});
+
+final getCommunityPostsProvider = StreamProvider.family((ref, String name) {
+  return ref.read(communityControllerProvider.notifier).getCommunityPosts(name);
 });
 
 class CommunityController extends StateNotifier<bool> {
@@ -146,6 +151,10 @@ class CommunityController extends StateNotifier<bool> {
         showSnackBar(context, 'Community joined successfully!');
       }
     });
+  }
+
+  Stream<List<Post>> getCommunityPosts(String name) {
+    return _communityRepository.getCommunityPosts(name);
   }
 
 }

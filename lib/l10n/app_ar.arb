@@ -16,6 +16,7 @@
     "add_moderator": "إضافة مشرف",
     "edit_community": "تعديل المجتمع",
     "save": "حفظ",
+    "posted_successfully": "تم النشر بنجاح!",
 
     "error": "{errorKey, select, community_with_same_name_already_exists {يوجد مجتمع بهذا الإسم مسبقاً.} other {خطأ}  }",
     "@error": {

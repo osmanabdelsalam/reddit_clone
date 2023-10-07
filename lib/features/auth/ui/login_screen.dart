@@ -5,6 +5,7 @@ import 'package:reddit_clone/app_core/commons/loader.dart';
 import 'package:reddit_clone/app_core/constants/constants.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:reddit_clone/features/auth/controller/auth_controller.dart';
+import 'package:reddit_clone/responsive/responsive.dart';
 
 class LoginScreen extends ConsumerWidget {
   const LoginScreen({super.key});
@@ -52,7 +53,7 @@ class LoginScreen extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 20,),
-          const GoogleSignInButton()
+          const Responsive(child: GoogleSignInButton()),
         ],
       ),
     );

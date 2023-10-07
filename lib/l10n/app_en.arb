@@ -16,6 +16,7 @@
   "add_moderator": "Add moderator",
   "edit_community": "Edit community",
   "save": "Save",
+  "posted_successfully": "Posted successfully!",
 
   "error": "{errorKey, select, community_with_same_name_already_exists {Community with same name already exists.} other {Error} }",
   "@error": {
