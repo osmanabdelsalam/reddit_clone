@@ -6,6 +6,7 @@ import 'package:reddit_clone/app_core/commons/loader.dart';
 import 'package:reddit_clone/features/auth/controller/auth_controller.dart';
 import 'package:reddit_clone/features/community/controller/community_controller.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:reddit_clone/models/community.dart';
 import 'package:routemaster/routemaster.dart';
 
 class CommunityScreen extends ConsumerWidget {
@@ -14,6 +15,10 @@ class CommunityScreen extends ConsumerWidget {
 
   void navigateToModeratorTools(BuildContext context) {
     Routemaster.of(context).push("/moderator-tools/$name");
+  }
+
+  void joinCommunity(WidgetRef ref, Community community, BuildContext context) {
+    ref.read(communityControllerProvider.notifier).joinCommunity(community, context);
   }
 
   @override
@@ -74,16 +79,14 @@ class CommunityScreen extends ConsumerWidget {
                                 child: Text(AppLocalizations.of(context)?.tools ?? "Tools")
                             ) :
                             OutlinedButton(
-                                onPressed: () {},
-                                style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 25,
-                                  )
+                              onPressed: () => joinCommunity(ref, community, context),
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
                                 ),
-                                child: Text(community.members.contains(user.uid) ? AppLocalizations.of(context)?.joined ?? "Joined" : AppLocalizations.of(context)?.join ?? "Join")
+                                padding: const EdgeInsets.symmetric(horizontal: 25),
+                              ),
+                              child: Text(community.members.contains(user.uid) ? 'Joined' : 'Join'),
                             ),
                           ],
                         ),
