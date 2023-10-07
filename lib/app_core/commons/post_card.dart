@@ -14,6 +14,7 @@ import 'package:reddit_clone/models/post_model.dart';
 import 'package:reddit_clone/responsive/responsive.dart';
 import 'package:reddit_clone/theme/app_theme.dart';
 import 'package:routemaster/routemaster.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PostCard extends ConsumerWidget {
   final Post post;
@@ -83,7 +84,7 @@ class PostCard extends ConsumerWidget {
                         ),
                       ),
                       Text(
-                        '${post.upvotes.length - post.downvotes.length == 0 ? 'Vote' : post.upvotes.length - post.downvotes.length}',
+                        '${post.upvotes.length - post.downvotes.length == 0 ? AppLocalizations.of(context)?.vote ?? "Vote" : post.upvotes.length - post.downvotes.length}',
                         style: const TextStyle(fontSize: 17),
                       ),
                       IconButton(
@@ -225,7 +226,7 @@ class PostCard extends ConsumerWidget {
                                         ),
                                       ),
                                       Text(
-                                        '${post.upvotes.length - post.downvotes.length == 0 ? 'Vote' : post.upvotes.length - post.downvotes.length}',
+                                        '${post.upvotes.length - post.downvotes.length == 0 ? AppLocalizations.of(context)?.vote ?? "Vote" : post.upvotes.length - post.downvotes.length}',
                                         style: const TextStyle(fontSize: 17),
                                       ),
                                       IconButton(
@@ -247,7 +248,7 @@ class PostCard extends ConsumerWidget {
                                       ),
                                     ),
                                     Text(
-                                      '${post.commentCount == 0 ? 'Comment' : post.commentCount}',
+                                      '${post.commentCount == 0 ? AppLocalizations.of(context)?.comment ?? "Comment" : post.commentCount}',
                                       style: const TextStyle(fontSize: 17),
                                     ),
                                   ],

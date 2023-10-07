@@ -7,6 +7,7 @@ import 'package:reddit_clone/features/auth/controller/auth_controller.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:reddit_clone/features/home/delegates/search_community_delegate.dart';
 import 'package:reddit_clone/features/home/drawers/community_list_drawer.dart';
+import 'package:reddit_clone/features/home/drawers/profile_drawer.dart';
 import 'package:reddit_clone/theme/app_theme.dart';
 import 'package:routemaster/routemaster.dart';
 
@@ -22,6 +23,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   void displayDrawer(BuildContext context) {
     Scaffold.of(context).openDrawer();
+  }
+
+  void displayEndDrawer(BuildContext context) {
+    Scaffold.of(context).openEndDrawer();
   }
 
   void onPageChanged(int page) {
@@ -66,13 +71,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 icon: CircleAvatar(
                   backgroundImage: NetworkImage(user.profilePicture),
                 ),
-                onPressed: () {},
+                onPressed: () => displayEndDrawer(context),
               );
             }
           ),
         ],
       ),
       drawer: const CommunityListDrawer(),
+      endDrawer: isGuest ? null : const ProfileDrawer(),
       body: Constants.tabWidgets[_page],
       bottomNavigationBar: isGuest || kIsWeb
           ? null

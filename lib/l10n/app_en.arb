@@ -17,6 +17,12 @@
   "edit_community": "Edit community",
   "save": "Save",
   "posted_successfully": "Posted successfully!",
+  "my_profile": "My Profile",
+  "logout": "Log Out",
+  "edit_profile": "Edit Profile",
+  "name": "Name",
+  "vote": "Vote",
+  "comment": "Comment",
 
   "error": "{errorKey, select, community_with_same_name_already_exists {Community with same name already exists.} other {Error} }",
   "@error": {

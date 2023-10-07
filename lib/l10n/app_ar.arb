@@ -17,6 +17,12 @@
     "edit_community": "تعديل المجتمع",
     "save": "حفظ",
     "posted_successfully": "تم النشر بنجاح!",
+    "my_profile": "ملفي الشخصي",
+    "logout": "خروج",
+    "edit_profile": "تعديل الملف الشخصي",
+    "name": "الإسم",
+    "vote": "تصويت",
+    "comment": "تعليق",
 
     "error": "{errorKey, select, community_with_same_name_already_exists {يوجد مجتمع بهذا الإسم مسبقاً.} other {خطأ}  }",
     "@error": {

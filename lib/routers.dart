@@ -9,6 +9,8 @@ import 'package:reddit_clone/features/community/ui/moderator_tools_screen.dart';
 import 'package:reddit_clone/features/home/ui/home_screen.dart';
 import 'package:reddit_clone/features/post/ui/add_post_screen.dart';
 import 'package:reddit_clone/features/post/ui/add_post_type_screen.dart';
+import 'package:reddit_clone/features/user_profile/ui/edit_profile_screen.dart';
+import 'package:reddit_clone/features/user_profile/ui/user_profile_screen.dart';
 import 'package:routemaster/routemaster.dart';
 
 final unAuthenticatedUserRoutes = RouteMap(routes: {
@@ -38,6 +40,18 @@ final authenticatedUserRoutes = RouteMap(routes: {
   '/add-post/:type': (routeData) => MaterialPage(
     child: AddPostTypeScreen(
       type: routeData.pathParameters['type']!,
+    ),
+  ),
+
+  '/u/:uid': (routeData) => MaterialPage(
+    child: UserProfileScreen(
+      uid: routeData.pathParameters['uid']!,
+    ),
+  ),
+
+  '/edit-profile/:uid': (routeData) => MaterialPage(
+    child: EditProfileScreen(
+      uid: routeData.pathParameters['uid']!,
     ),
   ),
 });
